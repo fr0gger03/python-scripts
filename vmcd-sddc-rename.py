@@ -64,7 +64,6 @@ access_token = token_json['access_token']
 # rename the SDDC
 rename_header = {'csp-auth-token': access_token}
 rename_url = f'https://vmc.vmware.com/vmc/fractal/api/orgs/{orgid}/edges/{sddcid}'
-# rename_data = {"location_name" : newname}
 rename_data = {"location_name" : newname}
 rename_response = requests.patch(rename_url, headers=rename_header, json=rename_data)
 json_response = rename_response.json()
