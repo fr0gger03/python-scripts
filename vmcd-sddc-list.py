@@ -49,7 +49,12 @@ if args.sddc_id is not None:
     response = requests.get(myurl, headers=myheader)
     if response.status_code == 200:
         json_response = response.json()
-        print(json.dumps(json_response, indent=2))
+        # print(json.dumps(json_response, indent=2))
+        print(f'SDDC Name: {json_response["name"]}')
+        print(f'Status: {json_response["edge_sddc_resource_config"]["customer_status"]}')
+        print(f'OEM: {json_response["edge_sddc_resource_config"]["oem_name"]}')
+        print(f'vCenter FQDN: {json_response["edge_sddc_resource_config"]["vcenter_config"]["public_fqdn"]}')
+        print(f'SDDC Version: {json_response["edge_sddc_resource_config"]["software_bundle_config"]["dimension_sddc_version"]}')
     else:
         print("There was an error. Check the syntax.")
         print(f'API call failed with status code {response.status_code}. URL: {myurl}.')
